@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import es.codeurjc.board.model.Post;
-import es.codeurjc.board.service.PostService;
+import es.codeurjc.board.service.PostService;  
 
 @Controller
 public class PostController {

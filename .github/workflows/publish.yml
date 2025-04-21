@@ -23,11 +23,16 @@ jobs:
       - name: Run tests
         run: mvn test
 
-      - name: Generate Docker image
-        run: mvn spring-boot:build-image -DskipTests -Dspring-boot.build-image.imageName=${{ secrets.DOCKERHUB_USERNAME }}/posts:v1
+      - name: Build Docker image
+        run: |
+          mvn spring-boot:build-image -DskipTests \
+            -Dspring-boot.build-image.imageName=${{ secrets.DOCKERHUB_USERNAME }}/posts:v1
+          docker images | grep "posts" || echo "¡Error al construir la imagen!"
 
       - name: Login to DockerHub
-        run: docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" -p "${{ secrets.DOCKERHUB_TOKEN }}"
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
-      - name: Push image to DockerHub
-        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/posts:v1
+      - name: Push with verification
+        run: |
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/posts:v1
+          echo "Verifica en: https://hub.docker.com/r/${{ secrets.DOCKERHUB_USERNAME }}/posts/tags"
