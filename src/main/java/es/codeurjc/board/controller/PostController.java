@@ -11,7 +11,7 @@ import es.codeurjc.board.model.Post;
 import es.codeurjc.board.service.PostService;  
 
 @Controller
-public class PostController {
+public class PostController {     
 
 	@Autowired
 	private PostService postService;
