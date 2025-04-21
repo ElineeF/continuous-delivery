@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import es.codeurjc.board.model.Post;
 import es.codeurjc.board.service.PostService;  
 
+//Prueba
+
 @Controller
 public class PostController {     
 
