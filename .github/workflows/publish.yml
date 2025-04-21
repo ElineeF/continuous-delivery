@@ -39,5 +39,5 @@ jobs:
 
       - name: Push with verification
         run: |
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/posts:v1
-          echo "Verifica en: https://hub.docker.com/r/${{ secrets.DOCKERHUB_USERNAME }}/posts/tags"
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/posts:${{ steps.version.outputs.version }}  # ← Usa la versión del POM
+          echo "Imagen subida: ${{ secrets.DOCKERHUB_USERNAME }}/posts:${{ steps.version.outputs.version }}"
