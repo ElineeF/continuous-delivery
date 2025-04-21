@@ -2,7 +2,7 @@ name: Publish in DockerHub
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "elineef"]
     paths:
       - 'src/**'
       - 'pom.xml'
